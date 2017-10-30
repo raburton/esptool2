@@ -357,6 +357,11 @@ bool CreateBinFile(char *elffile, char *imagefile, int bootver, unsigned char mo
 		len = 0x10000 - ftell(outfile);
 		debug("Adding boot v1.1 padding, %d bytes of '0xff'.\r\n", len);
 		data = (unsigned char*)malloc(len);
+		if (!data) {
+			error("Error: Can't allocate memory.\r\n");
+			goto end_function;
+		}
+
 		memset(data, 0xff, len);
 		if(fwrite(data, 1, len, outfile) != len) {
 			error("Error: Failed to write boot v1.1 spacer.\r\n");
