@@ -440,6 +440,8 @@ int main(int argc, char *argv[]) {
 			size = 2;
 		} else if (!strcmp(argv[i], "-2048")) {
 			size = 3;
+		} else if (!strcmp(argv[i], "-2048b")) {
+			size = 5;
 		} else if (!strcmp(argv[i], "-4096")) {
 			size = 4;
 		} else if (!strcmp(argv[i], "-20")) {
