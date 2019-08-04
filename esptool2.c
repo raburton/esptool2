@@ -33,16 +33,16 @@
 #define BIN_MAGIC_FLASH 0xE9
 
 typedef struct {
-    Elf32_Addr          addr;
-    Elf32_Word          size;
+    Elf32_Addr    addr;
+    Elf32_Word    size;
 } Section_Header;
 
 typedef struct {
-    unsigned char       magic;
-    unsigned char       count;
-    unsigned char       byte2;
-	unsigned char       byte3;
-    Elf32_Addr          entry;
+    uint8_t       magic;
+    uint8_t       count;
+    uint8_t       byte2;
+    uint8_t       byte3;
+    Elf32_Addr    entry;
 } Image_Header;
 
 static const char PADDING[IMAGE_PADDING] = {0};
@@ -444,6 +444,10 @@ int main(int argc, char *argv[]) {
 			size = 5;
 		} else if (!strcmp(argv[i], "-4096")) {
 			size = 4;
+		} else if (!strcmp(argv[i], "-8192")) {
+			size = 8;
+		} else if (!strcmp(argv[i], "-16384")) {
+			size = 9;
 		} else if (!strcmp(argv[i], "-20")) {
 			clock = 2;
 		} else if (!strcmp(argv[i], "-26.7")) {
@@ -498,7 +502,7 @@ int main(int argc, char *argv[]) {
 		print("          -boot1 = built for bootloader v1.1\r\n");
 		print("          -boot2 = built for bootloader v1.2+ (use for rBoot roms)\r\n");
 		print("          (elf file must have been linked appropriately for chosen option)\r\n");
-		print("        spi size (kb): -256 -512 -1024 -2048 -4096 (default -512)\r\n");
+		print("        spi size (kb): -256 -512 -1024 -2048 -4096 -8192 -16384 (default -512)\r\n");
 		print("        spi mode: -qio -qout -dio -dout (default -qio)\r\n");
 		print("        spi speed: -20 -26.7 -40 -80 (default -40)\r\n");
 		print("        include irom in checksum: -iromchksum (also needs enabling in rBoot)\r\n");

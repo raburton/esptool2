@@ -22,20 +22,8 @@
 #ifndef ESPTOOL2_H
 #define ESPTOOL2_H
 
-#ifdef WIN32
-typedef signed __int8     int8_t;
-typedef signed __int16    int16_t;
-typedef signed __int32    int32_t;
-typedef unsigned __int8   uint8_t;
-typedef unsigned __int16  uint16_t;
-typedef unsigned __int32  uint32_t;
-#else
 #include <stdint.h>
-#endif
-
-#define true 1
-#define false 0
-#define bool char
+#include <stdbool.h>
 
 void debug( const char* format, ... );
 void print( const char* format, ... );
